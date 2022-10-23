@@ -24,8 +24,10 @@ def data():
 # Sub program menampilkan kalau lagu/suara main
 # Sound
 def play_sound():
-    if wired == False:
+    if wired == False and prioritas != -1 :
         print(f"playing {playlist[song]} from ke-{prioritas} at {vol[prioritas]}")
+    elif wired == False and prioritas == -1:
+        print("tidak terhubung ke device")
     else:
         print(f"playing {playlist[song]} from wired at {vol[prioritas]}")
 
@@ -80,7 +82,7 @@ while do != "off":
 
     elif do == "next": #aksi 3 meambah indeks untuk playlist
         song += 1
-        if len(playlist)<song:
+        if len(playlist)<=song:
             song = 0
         play_sound()
 
